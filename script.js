@@ -83,6 +83,31 @@
         });
     }
 
+    // ─── PROJECT DEEP DIVE TOGGLES ──────────────────────
+    document.querySelectorAll('.btn-deep-dive').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+            const targetDiv = document.getElementById(targetId);
+            
+            if (targetDiv) {
+                const isActive = targetDiv.classList.contains('active');
+                
+                // Close all others and reset their buttons
+                document.querySelectorAll('.deep-dive-content').forEach(d => d.classList.remove('active'));
+                document.querySelectorAll('.btn-deep-dive').forEach(b => {
+                    b.innerHTML = '<i class="fas fa-microscope"></i> Target Analysis';
+                });
+                
+                if (!isActive) {
+                    targetDiv.classList.add('active');
+                    btn.innerHTML = '<i class="fas fa-times"></i> Close Analysis';
+                }
+                
+                enterBeep();
+            }
+        });
+    });
+
     // ─── NAVBAR SCROLL ──────────────────────────────────
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -113,6 +138,26 @@
         // Restart typewriters when mode changes to ensure they render if previously hidden
         startTypewriters();
     });
+
+    // ─── PORTRAIT PARALLAX ──────────────────────────────
+    const portrait = document.querySelector('.cyber-portrait');
+    if (portrait && window.matchMedia('(pointer: fine)').matches) {
+        portrait.addEventListener('mousemove', e => {
+            const rect = portrait.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            const dx = x - xc;
+            const dy = y - yc;
+            portrait.style.setProperty('--rx', `${dy / -15}deg`);
+            portrait.style.setProperty('--ry', `${dx / 15}deg`);
+        });
+        portrait.addEventListener('mouseleave', () => {
+            portrait.style.setProperty('--rx', '0deg');
+            portrait.style.setProperty('--ry', '0deg');
+        });
+    }
 
     // ─── SCROLL REVEAL ──────────────────────────────────
     const revealObserver = new IntersectionObserver((entries) => {
@@ -245,20 +290,18 @@ Type <span style="color:#3b82f6;">help</span> for a list of valid commands.<br><
     const COMMANDS = {
         help: () => `
 Available Commands:
-  <span style="color:#3b82f6;">whoami</span>      - Display current identity profile
-  <span style="color:#3b82f6;">skills</span>      - Enumerate technical capabilities
+  <span style="color:#3b82f6;">whoami</span>      - Display operative profile
+  <span style="color:#3b82f6;">skills</span>      - Enumerate technical arsenal
   <span style="color:#3b82f6;">projects</span>    - List deployed mission logs
   <span style="color:#3b82f6;">experience</span>  - View service history
   <span style="color:#3b82f6;">pgp</span>         - Fetch cryptographic public key
   <span style="color:#3b82f6;">contact</span>     - Establish secure comms
+  <span style="color:#3b82f6;">coffee</span>      - Establish caffeine levels
+  <span style="color:#3b82f6;">socials</span>     - Establish external links
+  <span style="color:#3b82f6;">decrypt</span>     - Execute decryption routine
   <span style="color:#3b82f6;">clear</span>       - Clear terminal output
-  <span style="color:#3b82f6;">sudo mode</span>   - Override environmental theme constraints
+  <span style="color:#3b82f6;">sudo mode</span>   - Override environmental constraints
   <span style="color:#3b82f6;">exit</span>        - Terminate shell session
-<br>`,
-        pgp: () => `
-[+] PGP KEY LOCATION:
-> <span style="color:#0f0;">wget https://0xlunatic.github.io/assets/pgp.txt</span>
-> <a href="assets/pgp.txt" target="_blank" class="term-link">[ Direct Download Link ]</a>
 <br>`,
         whoami: () => `
 [+] NIKHIL SHAKYA
@@ -266,6 +309,64 @@ Role: Aspiring Security Engineer & Cloud Researcher
 Education: B.Tech (Hons.) CSE - Cybersecurity & Blockchain (LPU)
 Status: Pre-final year student (6th Sem), actively seeking job/internship opportunities.
 <br>`,
+        coffee: () => `
+  ( (
+   ) )
+........
+|      |]  > Brewing fresh dark roast...
+\\      /   > Caffeine levels stabilizing.
+ \`----'    > Ready for deployment.
+<br>`,
+        socials: () => `
+[+] ESTABLISHING EXTERNAL LINKS
+LinkedIn: linkedin.com/in/nikhilshakya0905
+GitHub:   github.com/Nikhil0905
+Medium:   medium.com/@nikhilshakya0905
+<br>`,
+        decrypt: (args) => {
+            if (!args || args.length === 0 || args[0] === 'help') {
+                return `Usage: decrypt [target]<br>Targets: projects, skills, ui, system, [custom_string]`;
+            }
+            const target = args[0].toLowerCase();
+            
+            if (target === 'projects') {
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.classList.add('decrypted');
+                    setTimeout(() => card.classList.remove('decrypted'), 8000);
+                });
+                enterBeep();
+                return `[+] BYPASSING Project Filters...<br>[+] DATA RESTORED: Mission logs are now at peak visual fidelity (8s).`;
+            }
+            
+            if (target === 'skills') {
+                document.querySelectorAll('.skill-card, .skill-node').forEach(card => {
+                    card.classList.add('pulse-glow');
+                    setTimeout(() => card.classList.remove('pulse-glow'), 8000);
+                });
+                return `[+] CALIBRATING Neural-Skill Map...<br>[+] SUCCESS: Competencies illuminated (8s).`;
+            }
+
+            if (target === 'ui') {
+                document.body.classList.add('ui-decrypt-ripple');
+                setTimeout(() => document.body.classList.remove('ui-decrypt-ripple'), 3000);
+                return `[+] RESETTING Interface Scanlines...<br>[+] Global aesthetic stabilization in progress.`;
+            }
+
+            if (target === 'system') {
+                const flash = document.createElement('div');
+                flash.className = 'system-flash';
+                document.body.appendChild(flash);
+                setTimeout(() => flash.remove(), 1000);
+                return `[!] ACCESSING CORE OPERATING SYSTEM...<br>[+] STATUS: STABLE<br>[+] UPTIME: 99.9%<br>[+] KERNEL: Custom_NS-Sec_v2.0`;
+            }
+
+            return `
+[!] INITIATING BRUTEFORCE ON: ${sanitizeHTML(args[0])}
+[+] 0x234... FAILED
+[+] 0x9A2... SUCCESS
+[+] DECRYPTED DATA: "Knowledge is the only weapon that cannot be taken."
+<br>`;
+        },
         skills: () => `
 [+] Initiating skill enumeration...
 -> Languages: Python, C/C++, Bash, SQL, Solidity, JavaScript
@@ -294,6 +395,11 @@ Status: Pre-final year student (6th Sem), actively seeking job/internship opport
 [+] LinkedIn: <a href="https://linkedin.com/in/nikhilshakya0905/" style="color:var(--text-secondary)">linkedin.com/in/nikhilshakya0905</a>
 [+] GitHub: <a href="https://github.com/Nikhil0905/" style="color:var(--text-secondary)">github.com/Nikhil0905</a>
 <br>`,
+        pgp: () => `
+[+] PGP KEY LOCATION:
+> <span style="color:#0f0;">wget https://0xlunatic.github.io/assets/pgp.txt</span>
+> <a href="assets/pgp.txt" target="_blank" class="term-link">[ Direct Download Link ]</a>
+<br>`,
         clear: () => {
             terminalOutput.innerHTML = '';
             return '';
@@ -311,15 +417,17 @@ Status: Pre-final year student (6th Sem), actively seeking job/internship opport
 
     function processCommand(input) {
         appendOutput(cmdPrompt(input));
-        const cmd = input.toLowerCase().trim();
+        const parts = input.trim().split(/\s+/);
+        const cmdName = parts[0].toLowerCase();
+        const args = parts.slice(1);
 
-        if (COMMANDS[cmd]) {
-            const result = COMMANDS[cmd]();
+        if (COMMANDS[cmdName]) {
+            const result = COMMANDS[cmdName](args);
             if (result) appendOutput(`<div>${result}</div>`);
-        } else if (cmd.startsWith("sudo")) {
+        } else if (cmdName.startsWith("sudo")) {
             appendOutput(`<div><span style="color:#ef4444;">[!]</span> Access denied. This incident will be reported.</div><br>`);
         } else {
-            appendOutput(`<div>bash: ${sanitizeHTML(input)}: command not found</div><br>`);
+            appendOutput(`<div>bash: ${sanitizeHTML(cmdName)}: command not found</div><br>`);
         }
     }
 

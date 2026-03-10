@@ -29,8 +29,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css" integrity="sha512-BlFCHJWngPEHme4TwlEob6dPLfoNaQBTTISPwr4344nxR353w2vgGZ7GiSadbbeR20cJeeM0u1I2lAZuIZ1aOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7cenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -51,7 +51,9 @@
     <!-- Navigation / Mode Toggle -->
     <nav class="navbar" id="nav">
         <div class="nav-content">
-            <div class="brand">NS</div>
+            <div class="brand">
+                <span class="logo-n" data-content="N">N</span><span class="logo-s" data-content="S">S</span>
+            </div>
             <div class="nav-controls">
                 <button id="terminalBtn" class="magnetic root-only-btn" title="Open Terminal Emulator">
                     <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
@@ -200,137 +202,167 @@
 
             <div class="grid">
                 <!-- Project 1 -->
-                <div class="card service-card scroll-reveal">
+                <div class="card project-card reveal" data-category="cloud">
                     <div class="view-executive">
-                        <h3>Cloud Control-Plane Purple Team Lab</h3>
-                        <p>Research lab studying identity-based attacks in cloud control planes. Focused on IAM roles
-                            masking malicious behavior.</p>
-                        <div class="tags">
-                            <span><i class="devicon-amazonwebservices-plain-wordmark"></i> IAM/STS</span>
-                            <span><i class="devicon-terraform-plain"></i> Terraform</span>
-                            <span><i class="devicon-githubactions-plain"></i> Actions</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Cloud Security</span>
+                            <span class="project-tag">IAM/STS</span>
+                            <span class="project-tag">Terraform</span>
                         </div>
+                        <h3 class="project-title">Cloud Control-Plane Purple Team Lab</h3>
+                        <p class="project-description">Research lab studying identity-based attacks in cloud control planes, focusing on IAM role misuse and CloudTrail evasion techniques.</p>
                     </div>
                     <div class="view-root">
-                        <h3>target_01: PurpleCloud</h3>
+                        <h3 class="project-title">target_01: cloud-control-plane</h3>
                         <div class="term-output small">
-                            [EXEC] init DevOps Pipeline<br>
-                            > Provisioning EC2 & S3<br>
-                            > Emulating IAM AssumeRole<br>
-                            <span class="output-red">ALERT: Identity misuse detected in CloudTrail.</span>
+                            > auditing IAM policies...<br>
+                            > detected: AssumeRole privilege escalation<br>
+                            > status: VULNERABILITY_MAPPED
                         </div>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="project-link magnetic" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repository Internal</a>
+                        <button class="btn-deep-dive magnetic" data-target="deep-dive-cloud-lab"><i class="fas fa-microscope"></i> Target Analysis</button>
+                    </div>
+                    <div id="deep-dive-cloud-lab" class="deep-dive-content">
+                        <p><strong>Technical Deep Dive:</strong> This research environment emulates <code>AssumeRole</code> abuse and privilege escalation paths in AWS. It uses <code>Terraform</code> to provision vulnerable infrastructure and flags suspicious identity movements through automated <code>CloudTrail</code> analysis and GuardDuty-inspired logic.</p>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <a href="https://github.com/Nikhil0905/InsightOps" target="_blank" rel="noopener noreferrer"
-                    class="card service-card scroll-reveal">
+                <div class="card project-card reveal" data-category="offensive">
                     <div class="view-executive">
-                        <h3>InsightOps</h3>
-                        <p>AI-assisted SOC intelligence engine correlating Splunk alerts into MITRE ATT&CK–aligned
-                            detection logic.</p>
-                        <div class="tags">
-                            <span><i class="devicon-splunk-original"></i> Splunk</span>
-                            <span><i class="devicon-python-plain"></i> Python</span>
-                            <span><i class="devicon-flask-plain"></i> Flask</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Splunk</span>
+                            <span class="project-tag">SIEM</span>
+                            <span class="project-tag">Python</span>
                         </div>
+                        <h3 class="project-title">InsightOps</h3>
+                        <p class="project-description">Security operations intelligence engine correlating Splunk alerts into MITRE ATT&CK–aligned detection logic and risk scoring.</p>
                     </div>
                     <div class="view-root">
-                        <h3>target_02: InsightOps</h3>
+                        <h3 class="project-title">target_02: insight-ops</h3>
                         <div class="term-output small">
-                            [EXEC] init HEC Pipeline<br>
-                            > Ingesting Splunk alerts<br>
-                            > Evaluating risk score (0-100)<br>
-                            <span class="output-red">ALERT: Exploit attempt mitigated.</span>
+                            > parsing HEC stream...<br>
+                            > matching MITRE T1059.001...<br>
+                            > risk_score: 8.5/10 (CRITICAL)
                         </div>
                     </div>
-                </a>
+                    <div class="project-actions">
+                        <a href="https://github.com/Nikhil0905/InsightOps" class="project-link magnetic" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Source</a>
+                        <button class="btn-deep-dive magnetic" data-target="deep-dive-insightops"><i class="fas fa-microscope"></i> Target Analysis</button>
+                    </div>
+                    <div id="deep-dive-insightops" class="deep-dive-content">
+                        <p><strong>Intelligence Engine:</strong> InsightOps integrates with the <code>HEC Pipeline</code> to ingest real-time security events. It applies <code>structured correlation</code> to prioritize alerts based on threat actor profiles and historical data, mapping every detection to specific MITRE sub-techniques.</p>
+                    </div>
+                </div>
 
                 <!-- Project 3 -->
-                <a href="https://github.com/Nikhil0905/SmartNetIDS" target="_blank" rel="noopener noreferrer"
-                    class="card service-card scroll-reveal">
+                <div class="card project-card reveal" data-category="cloud">
                     <div class="view-executive">
-                        <h3>SmartNetIDS</h3>
-                        <p>Lightweight, ML-driven NIDS for real-time anomaly detection and technique identification with
-                            a Streamlit dashboard.</p>
-                        <div class="tags">
-                            <span><i class="devicon-python-plain"></i> Python</span>
-                            <span><i class="devicon-scikitlearn-plain"></i> Scikit</span>
-                            <span><i class="devicon-streamlit-plain"></i> Streamlit</span>
+                        <div class="project-tags">
+                            <span class="project-tag">NIDS</span>
+                            <span class="project-tag">Scikit-Learn</span>
+                            <span class="project-tag">Streamlit</span>
                         </div>
+                        <h3 class="project-title">SmartNetIDS</h3>
+                        <p class="project-description">Lightweight, ML-driven Network Intrusion Detection System for real-time anomaly detection with a custom Streamlit dashboard.</p>
                     </div>
                     <div class="view-root">
-                        <h3>target_03: SmartNetIDS</h3>
+                        <h3 class="project-title">target_03: smart-net-ids</h3>
                         <div class="term-output small">
-                            Loading Isolation Forest...<br>
-                            Capturing interface eth0<br>
-                            Analyzing pcap payloads...<br>
-                            <span class="output-green">Traffic baseline normal.</span>
+                            > capturing eth0...<br>
+                            > isolation_forest check: ANOMALY<br>
+                            > alert: potential data exfiltration
                         </div>
                     </div>
-                </a>
+                    <div class="project-actions">
+                        <a href="https://github.com/Nikhil0905/SmartNetIDS" class="project-link magnetic" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Source</a>
+                        <button class="btn-deep-dive magnetic" data-target="deep-dive-smartnet"><i class="fas fa-microscope"></i> Target Analysis</button>
+                    </div>
+                    <div id="deep-dive-smartnet" class="deep-dive-content">
+                        <p><strong>Anomaly Detection:</strong> Utilizes an <code>Isolation Forest</code> model trained on standard traffic baselines to identify out-of-band payloads. It captures packets on <code>eth0</code> via Scapy, extracting features in real-time to flag SYN floods and potential data exfiltration attempts.</p>
+                    </div>
+                </div>
 
                 <!-- Project 4 -->
-                <a href="https://github.com/Nikhil0905/Secure-File-Management-System" target="_blank" rel="noopener noreferrer"
-                    class="card service-card scroll-reveal">
+                <div class="card project-card reveal" data-category="offensive">
                     <div class="view-executive">
-                        <h3>Secure File Mgmt</h3>
-                        <p>CLI-based secure file management system with AES-256 encryption, 2FA, and integrated malware
-                            scanning.</p>
-                        <div class="tags">
-                            <span><i class="devicon-python-plain"></i> Python</span>
-                            <span>Cryptography</span>
-                            <span>JWT</span>
+                        <div class="project-tags">
+                            <span class="project-tag">Cryptography</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">JWT</span>
                         </div>
+                        <h3 class="project-title">Secure File Management System</h3>
+                        <p class="project-description">CLI-based secure storage with AES-256 encryption, 2FA via PyOTP, and integrated malware scanning for secure data persistence.</p>
                     </div>
                     <div class="view-root">
-                        <h3>target_04: SecureFS</h3>
+                        <h3 class="project-title">target_04: secure-fs</h3>
                         <div class="term-output small">
-                            > Generating session JWT<br>
-                            > Verifying Pyotp 2FA<br>
-                            > Encrypting blob (AES-256)<br>
-                            status: CIPHERTEXT_SECURE
+                            > encrypting blob (AES-256-GCM)...<br>
+                            > verifying PyOTP 2FA...<br>
+                            > integrity check: PASS
                         </div>
                     </div>
-                </a>
+                    <div class="project-actions">
+                        <a href="https://github.com/Nikhil0905/Secure-File-Management-System" class="project-link magnetic" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Source</a>
+                        <button class="btn-deep-dive magnetic" data-target="deep-dive-securefs"><i class="fas fa-microscope"></i> Target Analysis</button>
+                    </div>
+                    <div id="deep-dive-securefs" class="deep-dive-content">
+                        <p><strong>Security Architecture:</strong> Implements <code>AES-GCM 256</code> for authenticated encryption of local blobs. Authenticates users via <code>JWT-signed</code> sessions and enforces <code>PyOTP-based 2FA</code>. Includes a sanity-check layer that pipes new uploads through a static analyzer to detect malicious signatures.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Skills Section -->
         <section id="skills" class="section scroll-reveal">
             <div class="section-label">Capabilities</div>
-            <h2 class="section-title">Technical Arsenal</h2>
+            <h2 class="section-title">Specialized Skill Nodes</h2>
 
             <div class="view-executive">
-                <div class="thm-container">
-                    <a href="https://tryhackme.com/p/0xLunatic" target="_blank" rel="noopener noreferrer">
-                        <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge"
-                            class="thm-badge" loading="lazy" />
-                    </a>
-                </div>
-                <div class="skill-tags">
-                    <span><i class="devicon-python-plain colored"></i> Python</span>
-                    <span><i class="devicon-cplusplus-plain colored"></i> C/C++</span>
-                    <span><i class="devicon-bash-plain colored"></i> Bash</span>
-                    <span><i class="devicon-powershell-plain colored"></i> PowerShell</span>
-                    <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-                    <span><i class="devicon-html5-plain colored"></i> HTML/CSS</span>
-                    <span><i class="devicon-azuresqldatabase-plain colored"></i> SQL</span>
-                    <span><i class="devicon-solidity-plain colored"></i> Solidity</span>
-                    <span><i class="devicon-linux-plain colored"></i> Linux</span>
-                    <span><i class="devicon-windows8-original colored"></i> Windows System</span>
-                    <span><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
-                    <span><i class="devicon-googlecloud-plain colored"></i> Cloud Sec</span>
-                    <span>Wireshark & Scapy</span>
-                    <span>Burp Suite & Metasploit</span>
-                    <span>Active Directory</span>
-                    <span><i class="devicon-splunk-original colored"></i> Splunk</span>
-                    <span>Gophish</span>
-                    <span><i class="devicon-docker-plain colored"></i> Docker</span>
-                    <span><i class="devicon-terraform-plain colored"></i> Terraform</span>
-                    <span>Web App Pentesting</span>
-                    <span>Cryptography</span>
-                    <span>Blockchain (Truffle/Remix)</span>
+                <div class="skills-grid">
+                    <!-- Offensive Security Node -->
+                    <div class="card skill-node reveal">
+                        <div class="skill-node-header">
+                            <i class="fas fa-biohazard"></i>
+                            <h3>Offensive Ops</h3>
+                        </div>
+                        <p class="skill-node-desc">Specializing in vulnerability research and post-exploitation strategies.</p>
+                        <div class="skill-tags">
+                            <span>VAPT</span>
+                            <span>Web App Sec</span>
+                            <span>Network Pentesting</span>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & Infrastructure Node -->
+                    <div class="card skill-node reveal">
+                        <div class="skill-node-header">
+                            <i class="fas fa-cloud-shield"></i>
+                            <h3>Cloud Defense</h3>
+                        </div>
+                        <p class="skill-node-desc">Focusing on secure cloud migrations and identity access management.</p>
+                        <div class="skill-tags">
+                            <span>AWS Sec</span>
+                            <span>IAM Policy</span>
+                            <span>Linux Hardening</span>
+                        </div>
+                    </div>
+
+                    <!-- Core Engineering Node -->
+                    <div class="card skill-node reveal">
+                        <div class="skill-node-header">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Core Systems</h3>
+                        </div>
+                        <p class="skill-node-desc">Building resilient systems with security baked into the lifecycle.</p>
+                        <div class="skill-tags">
+                            <span>Python</span>
+                            <span>Blockchain</span>
+                            <span>GitOps</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -341,23 +373,16 @@
                         <span class="term-title">nmap -sV -p- nikhil.local</span>
                     </div>
                     <div class="term-body" data-typewriter>
-                        Starting Nmap 7.93 ( https://nmap.org )
-                        Nmap scan report for target (127.0.0.1)
-                        Host is up (0.00013s latency).
-
-                        PORT STATE SERVICE VERSION
-                        22/tcp open ssh Scripting / Bash / PowerShell
-                        80/tcp open http Web App Pentesting / OWASP
-                        443/tcp open https Applied Cryptography / AES-256
-                        53/tcp open domain Networking / Wireshark / Scapy
-                        3306/tcp open mysql DBMS / SQL Integration
-                        8080/tcp open proxy Burp Suite / Metasploit
-                        8443/tcp open kubernetes DevOps / Docker / Terraform
-                        8545/tcp open rpc Blockchain / Solidity / Truffle
-                        9090/tcp open zeus-admin Cloud Infra (AWS / AD / Splunk)
-
-                        Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span
-                        class="typewriter-cursor">_</span>
+                        Starting Nmap 7.93...
+                        Host is UP (0.00013s latency).
+                        PORT   STATE SERVICE   VERSION
+                        22/tcp open  ssh       Scripting / Automation
+                        80/tcp open  http      Web Pentesting / OWASP
+                        443/tcp open https     Applied Crypto / TLS
+                        3306/tcp open mysql     SQL Sec / Integration
+                        8080/tcp open proxy     Burp Suite / Metasploit
+                        9090/tcp open cloud     AWS / IAM / Splunk
+                        Nmap done: 1 IP address scanned in 1.42s</div>
                 </div>
             </div>
         </section>
@@ -425,21 +450,21 @@
                 <!-- Achievements -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
-                        <h3>Achievements</h3>
-                        <ul class="simple-list">
-                            <li><strong>Top 2% Globally</strong> on TryHackMe</li>
-                            <li><strong>500+ problems solved</strong> on coding platforms</li>
-                            <li>Multiple CTF participations (University/National)</li>
-                        </ul>
+                        <h3>Operational Ranking</h3>
+                        <div class="thm-badge-container">
+                            <!-- TryHackMe Dynamic Badge -->
+                            <a href="https://tryhackme.com/p/2657685" target="_blank" rel="noopener noreferrer">
+                                <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+                            </a>
+                        </div>
                     </div>
                     <div class="view-root">
                         <h3>sys.metrics</h3>
                         <div class="term-output small">
                             > Querying global_rank...<br>
                             <span class="output-green">TryHackMe: Top 2%</span><br>
-                            > Parsing algo_stats...<br>
-                            <span class="output-green">Problems Solved: >500</span><br>
-                            > CTF flags captured: MULTIPLE
+                            > Fetching live_feed...<br>
+                            <span class="output-green">Status: SYNCHRONIZED</span>
                         </div>
                     </div>
                 </div>

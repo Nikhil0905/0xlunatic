@@ -44,6 +44,12 @@ body.root-access {
     --shadow-hover: 0 16px 48px rgba(0, 255, 0, 0.12);
     
     --cursor-glow: rgba(0, 255, 0, 0.06);
+
+    font-family: var(--font-mono) !important;
+}
+
+body.root-access * {
+    font-family: var(--font-mono) !important;
 }
 
 /* BASE STYLES & VARIABLES */
@@ -183,7 +189,109 @@ body.root-access .gradient-text {
     max-width: 1200px; margin: 0 auto; padding: 0 24px;
     display: flex; justify-content: space-between; align-items: center;
 }
-.brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; text-shadow: 0 0 20px var(--accent-glow); }
+.brand {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.logo-n, .logo-s {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+.logo-n {
+    background-image: linear-gradient(to bottom, #00f2fe, #4facfe);
+    margin-right: 2px;
+}
+
+.logo-s {
+    background-image: linear-gradient(to bottom, #f093fb, #a855f7);
+    margin-left: -4px;
+}
+
+body.root-access .logo-n {
+    background-image: linear-gradient(to bottom, #43e97b, #38f9d7);
+    filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.3));
+}
+
+body.root-access .logo-s {
+    background-image: linear-gradient(to bottom, #ff0844, #ffb199);
+    filter: drop-shadow(0 0 10px rgba(255, 0, 60, 0.3));
+}
+
+/* HUD Scanline Effect - Static HUD elements */
+.brand::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--accent-dim),
+        transparent
+    );
+    opacity: 0.1;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Ghost Letters / Hex Trails */
+.logo-n::before, .logo-s::before {
+    content: attr(data-content);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.brand:hover .logo-n::before {
+    content: '0x4E'; /* Hex for N */
+    font-size: 0.6rem;
+    top: -15px;
+    opacity: 0.7;
+}
+
+.brand:hover .logo-s::before {
+    content: '0x53'; /* Hex for S */
+    font-size: 0.6rem;
+    top: 15px;
+    opacity: 0.7;
+}
+
+.brand:hover .logo-n, .brand:hover .logo-s {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+@keyframes scanV {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+@keyframes glitchText {
+    0% { transform: translate(0); opacity: 0.7; }
+    20% { transform: translate(-2px, 2px); opacity: 0.5; }
+    40% { transform: translate(2px, -2px); opacity: 0.8; }
+    60% { transform: translate(-2px, -2px); opacity: 0.6; }
+    80% { transform: translate(2px, 2px); opacity: 0.7; }
+    100% { transform: translate(0); opacity: 0.7; }
+}
 
 .nav-controls { display: flex; align-items: center; gap: 16px; }
 
@@ -270,13 +378,21 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    perspective: 1000px;
+    transition: transform 0.1s ease-out;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform-style: preserve-3d;
 }
+
 .portrait-base {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(70%) contrast(130%) brightness(80%);
+    transition: transform 0.1s ease-out;
+    transform: translateZ(50px);
 }
+
 .portrait-overlay {
     position: absolute;
     inset: 0;
@@ -284,7 +400,9 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     background: linear-gradient(45deg, rgba(255,0,50,0.3) 0%, rgba(0,200,255,0.3) 100%);
     mix-blend-mode: color; /* Maps to the greyscale beneath */
     pointer-events: none;
+    transform: translateZ(70px);
 }
+
 .scanlines {
     position: absolute;
     inset: 0;
@@ -297,8 +415,11 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     );
     pointer-events: none;
     z-index: 10;
+    transform: translateZ(90px);
+    opacity: 0.5;
 }
-/* RGB Aberration & Glitch */
+
+/* Burst Glitch - Only happens periodically */
 .cyber-portrait::before, .cyber-portrait::after {
     content: '';
     position: absolute;
@@ -308,17 +429,27 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     background-position: center;
     mix-blend-mode: screen;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0;
+    z-index: 5;
+    transform: translateZ(60px);
 }
+
 .cyber-portrait::before {
-    left: 4px;
-    filter: hue-rotate(90deg) saturate(200%); /* cyan-ish shifted image */
-    animation: glitchAnim 3s infinite linear alternate-reverse;
+    filter: hue-rotate(90deg) saturate(200%);
+    animation: burstGlitch 8s infinite;
 }
+
 .cyber-portrait::after {
-    left: -4px;
-    filter: hue-rotate(-90deg) saturate(200%) brightness(1.2); /* red-ish shifted image */
-    animation: glitchAnim2 4s infinite linear alternate-reverse;
+    filter: hue-rotate(-90deg) saturate(200%) brightness(1.2);
+    animation: burstGlitch 8s infinite 4s;
+}
+
+@keyframes burstGlitch {
+    0%, 95%, 100% { opacity: 0; clip-path: inset(0 0 0 0); transform: translateZ(60px) translate(0); }
+    96% { opacity: 0.6; clip-path: inset(20% 0 50% 0); transform: translateZ(60px) translate(-5px, 2px); }
+    97% { opacity: 0.8; clip-path: inset(60% 0 10% 0); transform: translateZ(60px) translate(5px, -2px); }
+    98% { opacity: 0.4; clip-path: inset(40% 0 80% 0); transform: translateZ(60px) translate(-2px, -3px); }
+    99% { opacity: 0.7; clip-path: inset(10% 0 70% 0); transform: translateZ(60px) translate(3px, 1px); }
 }
 
 @keyframes glitchAnim {
@@ -432,6 +563,12 @@ a.card .view-executive h3::after {
 a.card:hover .view-executive h3 { color: var(--accent); transform: translateY(-2px); }
 a.card:hover p, a.card:hover .tags, a.card:hover .simple-list { transform: translateY(-2px); }
 a.card:hover .view-executive h3::after { opacity: 1; transform: translate(0, 0); }
+
+/* DUAL VIEW CONTENT LOGIC */
+.view-root { display: none; }
+body.root-access .view-executive { display: none; }
+body.root-access .view-root { display: block; }
+
 .card::before {
     content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), var(--accent-dim), transparent 40%);
@@ -448,8 +585,49 @@ a.card:hover .view-executive h3::after { opacity: 1; transform: translate(0, 0);
 .card > * { position: relative; z-index: 1; }
 .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--border-hover); }
 
-.card h3 { font-size: 1.3rem; margin-bottom: 12px; }
 .card p { color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem; line-height: 1.7; }
+
+/* PROJECT DEEP DIVE CONTENT */
+.deep-dive-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    margin-top: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.deep-dive-content.active {
+    max-height: 500px; /* High enough to contain the content */
+    opacity: 1;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+.btn-deep-dive {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-deep-dive:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+}
+
 .tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .tags span, .skill-tags span {
     display: inline-flex; align-items: center; gap: 6px;
@@ -658,4 +836,153 @@ a.card:hover .view-executive h3::after { opacity: 1; transform: translate(0, 0);
 }
 @media (max-width: 768px) {
     .contact-card { padding: 24px; }
+}
+/* SKILLS REFINE */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+.skill-node {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.skill-node:hover {
+    border-color: var(--accent);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
+}
+.skill-node-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.skill-node-header i { font-size: 2rem; color: var(--accent); }
+.skill-node-header h3 { font-size: 1.4rem; font-weight: 700; margin: 0; }
+.skill-node-desc { color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px; }
+
+/* PROJECT DEEP DIVE */
+.deep-dive-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 12px;
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+.deep-dive-content.active {
+    max-height: 600px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid var(--accent-dim);
+}
+.btn-deep-dive {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-deep-dive:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+}
+
+/* THM BADGE */
+.thm-badge-container {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+    margin-top: 16px;
+    transition: all 0.3s ease;
+}
+.thm-badge-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-dim);
+    transform: translateY(-2px);
+}
+
+/* MAGNETIC CURSOR SYNC */
+.cursor-follower.magnetic-pull {
+    width: 80px;
+    height: 80px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 2px solid var(--accent);
+    mix-blend-mode: normal;
+}
+
+/* DECRYPTION EFFECTS */
+.project-card.decrypted {
+    filter: none !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 50px var(--accent-glow), inset 0 0 20px var(--accent-dim) !important;
+    transform: scale(1.05) translateY(-10px) !important;
+    animation: decryptShimmer 0.5s infinite alternate !important;
+    z-index: 50;
+}
+
+@keyframes decryptShimmer {
+    from { filter: brightness(1) contrast(1); }
+    to { filter: brightness(1.5) contrast(1.2) saturate(1.5); }
+}
+
+.skill-card.pulse-glow, .skill-node.pulse-glow {
+    animation: skillIntensePulse 1s infinite alternate cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(56, 189, 248, 0.1) !important;
+    z-index: 50;
+}
+
+@keyframes skillIntensePulse {
+    0% { box-shadow: 0 0 10px var(--accent-dim); border-color: var(--border); transform: scale(1); }
+    100% { box-shadow: 0 0 40px var(--accent-glow), 0 0 60px var(--accent-dim); border-color: var(--accent); transform: scale(1.03); }
+}
+
+.ui-decrypt-ripple {
+    animation: uiAggressiveRipple 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+@keyframes uiAggressiveRipple {
+    0% { filter: contrast(300%) brightness(2) hue-rotate(0deg); }
+    20% { filter: contrast(150%) brightness(1.5) hue-rotate(180deg); }
+    40% { filter: contrast(200%) brightness(0.5) hue-rotate(90deg); }
+    60% { filter: contrast(120%) brightness(1.2) hue-rotate(270deg); }
+    80% { filter: contrast(150%) brightness(1.1) hue-rotate(360deg); }
+    100% { filter: none; }
+}
+
+/* System Global Hack Overlay */
+.system-flash {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 255, 65, 0.1);
+    pointer-events: none;
+    z-index: 9999;
+    animation: systemOverload 0.8s ease-out forwards;
+}
+
+@keyframes systemOverload {
+    0% { opacity: 0; transform: scale(1.1); background: rgba(255, 255, 255, 0.5); }
+    10% { opacity: 1; background: rgba(0, 255, 65, 0.2); }
+    20% { opacity: 0.8; filter: invert(1); }
+    30% { opacity: 1; filter: invert(0); }
+    100% { opacity: 0; transform: scale(1); }
 }
