@@ -225,7 +225,7 @@ body.root-access .root-only-btn { display: flex; }
 .root-only-btn:hover { background: var(--accent-dim); transform: scale(1.05); }
 
 /* SECTIONS */
-.section { padding: 80px 0; position: relative; z-index: 1; }
+.section { padding: 120px 0; position: relative; z-index: 1; }
 .section-label {
     display: inline-block;
     font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
@@ -235,7 +235,7 @@ body.root-access .root-only-btn { display: flex; }
     border: 1px solid rgba(56, 189, 248, 0.2);
     border-radius: 100px;
 }
-.section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.02em; color: var(--text); }
+.section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 40px; letter-spacing: -0.02em; color: var(--text); }
 .section-desc { font-size: 1.15rem; color: var(--text-secondary); max-width: 650px; margin-bottom: 48px; line-height: 1.7; }
 
 /* DUAL MODE LOGIC */
@@ -632,4 +632,30 @@ a.card:hover .view-executive h3::after { opacity: 1; transform: translate(0, 0);
         border-top: 1px solid #000;
         background: none !important;
     }
+}
+/* CONTACT REFINEMENTS */
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+}
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+.contact-card {
+    max-width: 600px;
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+@media (max-width: 768px) {
+    .contact-card { padding: 24px; }
 }
