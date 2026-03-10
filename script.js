@@ -217,8 +217,14 @@
         terminalBody.scrollTop = terminalBody.scrollHeight;
     }
 
+    function sanitizeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     function cmdPrompt(text) {
-        return `<div><span class="prompt-user">guest@ns</span>:<span class="prompt-path">~</span>$ <span>${text.replace(/</g,'&lt;')}</span></div>`;
+        return `<div><span class="prompt-user">guest@ns</span>:<span class="prompt-path">~</span>$ <span>${sanitizeHTML(text)}</span></div>`;
     }
 
     function printWelcome() {
