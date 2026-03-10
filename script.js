@@ -258,7 +258,7 @@ Available Commands:
         pgp: () => `
 [+] PGP KEY LOCATION:
 > <span style="color:#0f0;">wget https://0xlunatic.github.io/pgp.txt</span>
-> Or <a href="pgp.txt" target="_blank" class="term-link" style="color:#3b82f6; text-decoration: underline;">click here to view in browser</a>.
+> <a href="pgp.txt" target="_blank" class="term-link">[ Direct Download Link ]</a>
 <br>`,
         whoami: () => `
 [+] NIKHIL SHAKYA
@@ -422,3 +422,4 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
