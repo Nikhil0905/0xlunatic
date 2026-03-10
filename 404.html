@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Access Violation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: #00ff00;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Ambient Glow */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.1), transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            z-index: 10;
+            max-width: 600px;
+            padding: 24px;
+        }
+
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+            color: #ff003c;
+            text-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+            animation: glitch 1s linear infinite;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            color: #e2e8f0;
+        }
+
+        .term-output {
+            background: #0a0a0a;
+            border: 1px dashed rgba(255, 0, 60, 0.5);
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 32px;
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
+        }
+
+        .cmd { color: #fff; }
+        .err { color: #ff003c; font-weight: bold; }
+        .sys { color: #00ff00; }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            font-family: 'Fira Code', monospace;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>Fatal Exception: Requested resource not mapped in current memory space.</p>
+        
+        <div class="term-output">
+            <div><span class="cmd">guest@ns-sec:~$</span> curl -I $REQUEST_URI</div>
+            <div class="err">HTTP/1.1 404 Not Found</div>
+            <div>[!] Access Violation Detected.</div>
+            <div>[!] Generating incident report...</div>
+            <div class="sys">[+] Recommendation: Re-establish secure connection to root entry node.</div>
+        </div>
+
+        <a href="/" class="btn">> return_to_root()</a>
+    </div>
+</body>
+</html>

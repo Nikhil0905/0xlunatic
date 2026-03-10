@@ -574,3 +574,41 @@ a.card:hover .view-executive h3::after { opacity: 1; transform: translate(0, 0);
     .hero-title { font-size: 3rem; }
     .terminal-window { height: 80vh; }
 }
+
+/* 
+   PRINT STYLESHEET 
+   Provides a clean, ink-saving layout for recruiters/managers physically printing the page 
+*/
+@media print {
+    body, body.root-access {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    .view-root, .toggle-container, .root-only-btn, .btn-primary, .btn-ghost, 
+    .terminal-overlay, .glow::before, .scanlines {
+        display: none !important;
+    }
+    .section { 
+        padding: 40px 0 !important; 
+        page-break-inside: avoid;
+    }
+    .card {
+        background: none !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        color: #000 !important;
+        page-break-inside: avoid;
+    }
+    .gradient-text {
+        background: none !important;
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+    }
+    .hero-title, .section-title, p, h3, li {
+        color: #000 !important;
+    }
+    .footer {
+        border-top: 1px solid #000;
+        background: none !important;
+    }
+}
