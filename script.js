@@ -284,8 +284,8 @@ Status: Seeking vulnerabilities, building defenses.
         contact: () => `
 [+] Email: <a href="mailto:nikhilshakya0905@gmail.com" style="color:var(--text-secondary)">nikhilshakya0905@gmail.com</a>
 [+] Phone: +91-9872408318
-[+] LinkedIn: <a href="http://linkedin.com/in/nikhilshakya0905/" style="color:var(--text-secondary)">linkedin.com/in/nikhilshakya0905</a>
-[+] GitHub: <a href="http://github.com/Nikhil0905/" style="color:var(--text-secondary)">github.com/Nikhil0905</a>
+[+] LinkedIn: <a href="https://linkedin.com/in/nikhilshakya0905/" style="color:var(--text-secondary)">linkedin.com/in/nikhilshakya0905</a>
+[+] GitHub: <a href="https://github.com/Nikhil0905/" style="color:var(--text-secondary)">github.com/Nikhil0905</a>
 <br>`,
         clear: () => {
             terminalOutput.innerHTML = '';
@@ -312,7 +312,7 @@ Status: Seeking vulnerabilities, building defenses.
         } else if (cmd.startsWith("sudo")) {
             appendOutput(`<div><span style="color:#ef4444;">[!]</span> Access denied. This incident will be reported.</div><br>`);
         } else {
-            appendOutput(`<div>bash: ${input.replace(/</g,'&lt;')}: command not found</div><br>`);
+            appendOutput(`<div>bash: ${sanitizeHTML(input)}: command not found</div><br>`);
         }
     }
 
