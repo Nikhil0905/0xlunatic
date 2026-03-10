@@ -4,11 +4,11 @@ const ASSETS_TO_CACHE = [
   '/index.html',
   '/style.css',
   '/script.js',
-  '/favicon.png',
-  '/portrait.jpg',
-  '/404.html',
-  '/pgp.txt',
-  '/Nikhil_Shakya_CV.pdf',
+  '/assets/favicon.png',
+  '/assets/portrait.jpg',
+  '/manifest.json',
+  '/assets/pgp.txt',
+  '/assets/Nikhil_Shakya_CV.pdf',
   'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];

@@ -257,14 +257,14 @@ Available Commands:
 <br>`,
         pgp: () => `
 [+] PGP KEY LOCATION:
-> <span style="color:#0f0;">wget https://0xlunatic.github.io/pgp.txt</span>
-> <a href="pgp.txt" target="_blank" class="term-link">[ Direct Download Link ]</a>
+> <span style="color:#0f0;">wget https://0xlunatic.github.io/assets/pgp.txt</span>
+> <a href="assets/pgp.txt" target="_blank" class="term-link">[ Direct Download Link ]</a>
 <br>`,
         whoami: () => `
 [+] NIKHIL SHAKYA
-Role: Security Engineer & Architect
+Role: Aspiring Security Engineer & Cloud Researcher
 Education: B.Tech (Hons.) CSE - Cybersecurity & Blockchain (LPU)
-Status: Seeking vulnerabilities, building defenses.
+Status: Final year student, seeking placement opportunities.
 <br>`,
         skills: () => `
 [+] Initiating skill enumeration...
@@ -281,8 +281,8 @@ Status: Seeking vulnerabilities, building defenses.
    - Exploited OWASP Top 10 vulnerabilities, performed manual pentesting.
 <br>`,
         projects: () => `
-[+] Discovered deployments:
-1. Cloud Control-Plane Purple Team Lab
+[+] Discovered deployments (Research & Academic Labs):
+1. Cloud Control-Plane Purple Team Lab (Research Deployment)
 2. InsightOps (AI-Assisted SOC Intelligence Engine)
 3. SmartNetIDS (ML-based Network Intrusion Detection)
 4. Secure File Management System (AES-256 E2E Encryption)
