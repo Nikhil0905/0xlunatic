@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Security Headers (Fallback for non-Netlify hosting) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://tryhackme-badges.s3.amazonaws.com; script-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https://tryhackme-badges.s3.amazonaws.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <title>Nikhil Shakya | Security Engineer</title>
     <!-- Open Graph SEO Details -->
     <meta property="og:title" content="Nikhil Shakya | Security Engineer">
-    <meta property="og:description" content="Securing the digital frontier through offensive intelligence and robust engineering.">
+    <meta property="og:description"
+        content="Securing the digital frontier through offensive intelligence and robust engineering.">
     <meta property="og:image" content="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png">
     <meta property="og:url" content="https://0xlunatic.github.io/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Loader -->
     <div id="loader" class="loader">
@@ -39,7 +45,10 @@
             <div class="brand">NS</div>
             <div class="nav-controls">
                 <button id="terminalBtn" class="magnetic root-only-btn" title="Open Terminal Emulator">
-                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
                 </button>
                 <div class="toggle-container magnetic">
                     <input type="checkbox" id="mode-toggle" class="toggle-checkbox">
@@ -59,46 +68,51 @@
         <section class="section hero scroll-reveal">
             <div class="hero-content">
                 <div class="view-executive">
-                <p class="hero-greeting">Hello, I'm</p>
-                <h1 class="hero-title">Nikhil Shakya</h1>
-                <h2 class="hero-subtitle">Securing the digital frontier through <span class="gradient-text">offensive intelligence</span> and robust engineering.</h2>
-                <p class="hero-intro">I am a Security Researcher specializing in offensive capabilities and infrastructure defense. When I'm not breaking web apps or exploring cloud vulnerabilities, I'm building tools to detect and stop them.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary magnetic">Explore Projects</a>
-                    <a href="./Nikhil_Shakya_CV.pdf" target="_blank" class="btn btn-ghost magnetic"><i class="fa-solid fa-file-pdf"></i> View CV</a>
-                    <a href="#contact" class="btn btn-ghost magnetic">Get in Touch</a>
-                </div>
-                <div class="hero-quote scroll-reveal">
-                    "My approach to security is hands-on: I don’t just want to know how systems are built, I want to understand how they are breached and, more importantly, how to defend them."
-                </div>
-            </div>
-            
-            <div class="view-root">
-                <div class="terminal-block">
-                    <div class="term-header">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                        <span class="term-title">bash - aws_iam_policy.json</span>
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-title">Nikhil Shakya</h1>
+                    <h2 class="hero-subtitle">Securing the digital frontier through <span
+                            class="gradient-text">offensive intelligence</span> and robust engineering.</h2>
+                    <p class="hero-intro">I am a Security Researcher specializing in offensive capabilities and
+                        infrastructure defense. When I'm not breaking web apps or exploring cloud vulnerabilities, I'm
+                        building tools to detect and stop them.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary magnetic">Explore Projects</a>
+                        <a href="./Nikhil_Shakya_CV.pdf" target="_blank" class="btn btn-ghost magnetic"><i
+                                class="fa-solid fa-file-pdf"></i> View CV</a>
+                        <a href="#contact" class="btn btn-ghost magnetic">Get in Touch</a>
                     </div>
-                    <div class="term-body" data-typewriter>
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": { "User": "Nikhil_Shakya" },
-      "Action": [
-        "security:IdentifyVulnerabilities",
-        "infrastructure:HardenSystems",
-        "threat:Mitigate"
-      ],
-      "Resource": "arn:aws:enterprise::systems/*"
-    }
-  ]
-}</div><span class="typewriter-cursor">_</span>
+                    <div class="hero-quote scroll-reveal">
+                        "My approach to security is hands-on: I don’t just want to know how systems are built, I want to
+                        understand how they are breached and, more importantly, how to defend them."
+                    </div>
+                </div>
+
+                <div class="view-root">
+                    <div class="terminal-block">
+                        <div class="term-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="term-title">bash - aws_iam_policy.json</span>
+                        </div>
+                        <div class="term-body" data-typewriter>
+                            {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                            {
+                            "Effect": "Allow",
+                            "Principal": { "User": "Nikhil_Shakya" },
+                            "Action": [
+                            "security:IdentifyVulnerabilities",
+                            "infrastructure:HardenSystems",
+                            "threat:Mitigate"
+                            ],
+                            "Resource": "arn:aws:enterprise::systems/*"
+                            }
+                            ]
+                            }</div><span class="typewriter-cursor">_</span>
+                    </div>
                 </div>
             </div>
-            </div>
-            
+
             <!-- Hero Portrait -->
             <div class="hero-visual">
                 <div class="cyber-portrait" style="--portrait: url('portrait.jpg');">
@@ -114,7 +128,9 @@
             <div class="section-label">Core Paradigm</div>
             <div class="view-executive">
                 <h2 class="section-title">Security as an Enabler</h2>
-                <p class="section-desc">I believe that security should not be a roadblock, but a fundamental building block of modern infrastructure. By embedding security early in the development lifecycle, we build resilient systems capable of withstanding advanced threats without compromising velocity.</p>
+                <p class="section-desc">I believe that security should not be a roadblock, but a fundamental building
+                    block of modern infrastructure. By embedding security early in the development lifecycle, we build
+                    resilient systems capable of withstanding advanced threats without compromising velocity.</p>
             </div>
             <div class="view-root">
                 <h2 class="section-title">core_truth.md</h2>
@@ -133,7 +149,7 @@
         <section id="experience" class="section scroll-reveal">
             <div class="section-label">Service History</div>
             <h2 class="section-title">Experience</h2>
-            
+
             <div class="view-executive">
                 <div class="timeline">
                     <div class="timeline-item">
@@ -142,7 +158,8 @@
                         <div class="timeline-org">Techvanto</div>
                         <ul class="timeline-details">
                             <li>Developed SmartNetIDS, a machine learning–based Network Intrusion Detection System.</li>
-                            <li>Conducted security assessments and penetration testing using Nmap, Wireshark, Metasploit.</li>
+                            <li>Conducted security assessments and penetration testing using Nmap, Wireshark,
+                                Metasploit.</li>
                             <li>Completed 60+ TryHackMe labs applying techniques to real-world attacks.</li>
                         </ul>
                     </div>
@@ -151,19 +168,22 @@
                         <h3 class="timeline-title">Cyber Security Intern</h3>
                         <div class="timeline-org">Redynox-TheRedUsers</div>
                         <ul class="timeline-details">
-                            <li>Exploited web application vulnerabilities (SQLi, CSRF, Clickjacking) using OWASP ZAP.</li>
+                            <li>Exploited web application vulnerabilities (SQLi, CSRF, Clickjacking) using OWASP ZAP.
+                            </li>
                             <li>Performed manual penetration testing to extract data and analyze anomalies.</li>
                             <li>Strengthened expertise in OWASP Top 10 risks.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
+
             <div class="view-root">
                 <div class="term-output">
                     <span class="cmd-line">root@ns-sec:~$</span> tail -n 10 /var/log/career.log<br>
-                    <span class="output-green">[Techvanto]</span> 2025-06: Developed ML-based IDS. Executed pentesting with Nmap/Metasploit. Completed 60+ THM labs.<br>
-                    <span class="output-green">[Redynox]</span> 2025-06: Exploited OWASP Top 10 web vulnerabilities (SQLi, CSRF). Analyzed application security posture.
+                    <span class="output-green">[Techvanto]</span> 2025-06: Developed ML-based IDS. Executed pentesting
+                    with Nmap/Metasploit. Completed 60+ THM labs.<br>
+                    <span class="output-green">[Redynox]</span> 2025-06: Exploited OWASP Top 10 web vulnerabilities
+                    (SQLi, CSRF). Analyzed application security posture.
                 </div>
             </div>
         </section>
@@ -172,13 +192,14 @@
         <section id="projects" class="section scroll-reveal">
             <div class="section-label">Deployments</div>
             <h2 class="section-title">Mission Logs</h2>
-            
+
             <div class="grid">
                 <!-- Project 1 -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
                         <h3>Cloud Control-Plane Purple Team Lab</h3>
-                        <p>Research lab studying identity-based attacks in cloud control planes. Focused on IAM roles masking malicious behavior.</p>
+                        <p>Research lab studying identity-based attacks in cloud control planes. Focused on IAM roles
+                            masking malicious behavior.</p>
                         <div class="tags">
                             <span><i class="devicon-amazonwebservices-plain-wordmark"></i> IAM/STS</span>
                             <span><i class="devicon-terraform-plain"></i> Terraform</span>
@@ -197,10 +218,12 @@
                 </div>
 
                 <!-- Project 2 -->
-                <a href="https://github.com/Nikhil0905/InsightOps" target="_blank" class="card service-card scroll-reveal">
+                <a href="https://github.com/Nikhil0905/InsightOps" target="_blank"
+                    class="card service-card scroll-reveal">
                     <div class="view-executive">
                         <h3>InsightOps</h3>
-                        <p>AI-assisted SOC intelligence engine correlating Splunk alerts into MITRE ATT&CK–aligned detection logic.</p>
+                        <p>AI-assisted SOC intelligence engine correlating Splunk alerts into MITRE ATT&CK–aligned
+                            detection logic.</p>
                         <div class="tags">
                             <span><i class="devicon-splunk-original"></i> Splunk</span>
                             <span><i class="devicon-python-plain"></i> Python</span>
@@ -219,10 +242,12 @@
                 </a>
 
                 <!-- Project 3 -->
-                <a href="https://github.com/Nikhil0905/SmartNetIDS" target="_blank" class="card service-card scroll-reveal">
+                <a href="https://github.com/Nikhil0905/SmartNetIDS" target="_blank"
+                    class="card service-card scroll-reveal">
                     <div class="view-executive">
                         <h3>SmartNetIDS</h3>
-                        <p>Lightweight, ML-driven NIDS for real-time anomaly detection and technique identification with a Streamlit dashboard.</p>
+                        <p>Lightweight, ML-driven NIDS for real-time anomaly detection and technique identification with
+                            a Streamlit dashboard.</p>
                         <div class="tags">
                             <span><i class="devicon-python-plain"></i> Python</span>
                             <span><i class="devicon-scikitlearn-plain"></i> Scikit</span>
@@ -241,10 +266,12 @@
                 </a>
 
                 <!-- Project 4 -->
-                <a href="https://github.com/Nikhil0905/Secure-File-Management-System" target="_blank" class="card service-card scroll-reveal">
+                <a href="https://github.com/Nikhil0905/Secure-File-Management-System" target="_blank"
+                    class="card service-card scroll-reveal">
                     <div class="view-executive">
                         <h3>Secure File Mgmt</h3>
-                        <p>CLI-based secure file management system with AES-256 encryption, 2FA, and integrated malware scanning.</p>
+                        <p>CLI-based secure file management system with AES-256 encryption, 2FA, and integrated malware
+                            scanning.</p>
                         <div class="tags">
                             <span><i class="devicon-python-plain"></i> Python</span>
                             <span>Cryptography</span>
@@ -268,11 +295,12 @@
         <section id="skills" class="section scroll-reveal">
             <div class="section-label">Capabilities</div>
             <h2 class="section-title">Technical Arsenal</h2>
-            
+
             <div class="view-executive">
                 <div class="thm-container">
-                    <a href="https://tryhackme.com/p/0xlunatic" target="_blank">
-                        <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge" class="thm-badge" />
+                    <a href="https://tryhackme.com/p/0xLunatic" target="_blank">
+                        <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge"
+                            class="thm-badge" />
                     </a>
                 </div>
                 <div class="skill-tags">
@@ -300,7 +328,7 @@
                     <span>Blockchain (Truffle/Remix)</span>
                 </div>
             </div>
-            
+
             <div class="view-root">
                 <div class="terminal-block">
                     <div class="term-header">
@@ -308,31 +336,32 @@
                         <span class="term-title">nmap -sV -p- nikhil.local</span>
                     </div>
                     <div class="term-body" data-typewriter>
-Starting Nmap 7.93 ( https://nmap.org )
-Nmap scan report for target (127.0.0.1)
-Host is up (0.00013s latency).
+                        Starting Nmap 7.93 ( https://nmap.org )
+                        Nmap scan report for target (127.0.0.1)
+                        Host is up (0.00013s latency).
 
-PORT      STATE SERVICE    VERSION
-22/tcp    open  ssh        Scripting / Bash / PowerShell
-80/tcp    open  http       Web App Pentesting / OWASP
-443/tcp   open  https      Applied Cryptography / AES-256
-53/tcp    open  domain     Networking / Wireshark / Scapy
-3306/tcp  open  mysql      DBMS / SQL Integration
-8080/tcp  open  proxy      Burp Suite / Metasploit
-8443/tcp  open  kubernetes DevOps / Docker / Terraform
-8545/tcp  open  rpc        Blockchain / Solidity / Truffle
-9090/tcp  open  zeus-admin Cloud Infra (AWS / AD / Splunk)
+                        PORT STATE SERVICE VERSION
+                        22/tcp open ssh Scripting / Bash / PowerShell
+                        80/tcp open http Web App Pentesting / OWASP
+                        443/tcp open https Applied Cryptography / AES-256
+                        53/tcp open domain Networking / Wireshark / Scapy
+                        3306/tcp open mysql DBMS / SQL Integration
+                        8080/tcp open proxy Burp Suite / Metasploit
+                        8443/tcp open kubernetes DevOps / Docker / Terraform
+                        8545/tcp open rpc Blockchain / Solidity / Truffle
+                        9090/tcp open zeus-admin Cloud Infra (AWS / AD / Splunk)
 
-Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="typewriter-cursor">_</span>
+                        Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span
+                        class="typewriter-cursor">_</span>
                 </div>
             </div>
         </section>
-        
+
         <!-- Certifications & Education Section -->
         <section id="education" class="section scroll-reveal">
             <div class="section-label">Credentials</div>
             <h2 class="section-title">Education & Certifications</h2>
-            
+
             <div class="grid">
                 <!-- Education -->
                 <div class="card service-card scroll-reveal">
@@ -341,11 +370,13 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="ty
                         <ul class="simple-list">
                             <li>
                                 <strong>Lovely Professional University</strong><br>
-                                <span style="font-size:0.9rem; color:var(--text-secondary);">B.Tech (Hons.) CSE - Cybersecurity & Blockchain<br>CGPA: 8.66</span>
+                                <span style="font-size:0.9rem; color:var(--text-secondary);">B.Tech (Hons.) CSE -
+                                    Cybersecurity & Blockchain<br>CGPA: 8.66</span>
                             </li>
                             <li style="margin-top:12px;">
                                 <strong>Kendriya Vidyalaya 3BRD</strong><br>
-                                <span style="font-size:0.9rem; color:var(--text-secondary);">Intermediate - PCM with CS<br>Percentage: 86%</span>
+                                <span style="font-size:0.9rem; color:var(--text-secondary);">Intermediate - PCM with
+                                    CS<br>Percentage: 86%</span>
                             </li>
                         </ul>
                     </div>
@@ -385,7 +416,7 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="ty
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Achievements -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
@@ -414,28 +445,36 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="ty
         <section id="contact" class="section scroll-reveal">
             <div class="section-label">Comms</div>
             <h2 class="section-title">Establish Connection</h2>
-            
+
             <div class="view-executive">
                 <div class="status-pill status-pill-glow">
                     <span class="status-pulse"></span>
-                    <span class="status-text"><strong>Actively looking for opportunities</strong> to help individuals and organizations securely achieve their goals. Let's build and break things together.</span>
+                    <span class="status-text"><strong>Actively looking for opportunities</strong> to help individuals
+                        and organizations securely achieve their goals. Let's build and break things together.</span>
                 </div>
-                <p class="section-desc" style="font-weight: 600; color: var(--text);">Email: nikhilshakya0905@gmail.com <br>Phone: +91-9872408318</p>
+                <p class="section-desc" style="font-weight: 600; color: var(--text);">Email: nikhilshakya0905@gmail.com
+                    <br>Phone: +91-9872408318</p>
                 <div class="contact-links" style="margin-top: 32px;">
-                    <a href="mailto:nikhilshakya0905@gmail.com" class="btn btn-primary magnetic"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                    <a href="http://linkedin.com/in/nikhilshakya0905/" class="btn btn-ghost magnetic" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                    <a href="http://github.com/Nikhil0905/" class="btn btn-ghost magnetic" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-                    <a href="https://medium.com/@nikhilshakya0905" class="btn btn-ghost magnetic" target="_blank"><i class="fa-brands fa-medium"></i> Medium</a>
-                    <a href="https://buymeacoffee.com/0xlunatic" class="btn btn-ghost magnetic" target="_blank"><i class="fa-solid fa-mug-hot"></i> BuyMeACoffee</a>
+                    <a href="mailto:nikhilshakya0905@gmail.com" class="btn btn-primary magnetic"><i
+                            class="fa-solid fa-envelope"></i> Email Me</a>
+                    <a href="http://linkedin.com/in/nikhilshakya0905/" class="btn btn-ghost magnetic" target="_blank"><i
+                            class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    <a href="http://github.com/Nikhil0905/" class="btn btn-ghost magnetic" target="_blank"><i
+                            class="fa-brands fa-github"></i> GitHub</a>
+                    <a href="https://medium.com/@nikhilshakya0905" class="btn btn-ghost magnetic" target="_blank"><i
+                            class="fa-brands fa-medium"></i> Medium</a>
+                    <a href="https://buymeacoffee.com/0xlunatic" class="btn btn-ghost magnetic" target="_blank"><i
+                            class="fa-solid fa-mug-hot"></i> BuyMeACoffee</a>
                 </div>
             </div>
-            
+
             <div class="view-root">
                 <div class="term-output">
                     <span class="cmd-line">root@ns-sec:~$</span> nc -zv contact.ns.local 443<br>
                     Connection to contact.ns.local 443 port [tcp/https] succeeded!<br>
                     > <span class="output-green">Status: OPEN_FOR_OPS</span><br>
-                    > <a href="mailto:nikhilshakya0905@gmail.com" class="output-green">[ initiate SMTP payload : nikhilshakya0905@gmail.com ]</a><br>
+                    > <a href="mailto:nikhilshakya0905@gmail.com" class="output-green">[ initiate SMTP payload :
+                        nikhilshakya0905@gmail.com ]</a><br>
                     > <a href="tel:+919872408318" class="output-green">[ initiate voice comms: +91-9872408318 ]</a><br>
                     > <a href="http://github.com/Nikhil0905/" class="output-green">[ clone remote repository ]</a>
                 </div>
@@ -459,7 +498,8 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="ty
                     <span class="terminal-prompt">
                         <span class="prompt-user">guest@ns</span>:<span class="prompt-path">~</span>$
                     </span>
-                    <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                    <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" spellcheck="false"
+                        autofocus>
                 </div>
             </div>
         </div>
@@ -475,4 +515,5 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds</div><span class="ty
 
     <script src="script.js"></script>
 </body>
+
 </html>
