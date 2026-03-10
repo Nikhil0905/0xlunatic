@@ -66,6 +66,27 @@ body {
     min-height: 100vh;
 }
 
+/* Custom Selection Color */
+::selection {
+    background: var(--accent);
+    color: #0b1120;
+}
+body.root-access ::selection {
+    color: #050505;
+}
+
+/* Scroll Progress HUD */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent);
+    z-index: 9999;
+    box-shadow: 0 0 15px var(--accent);
+    transition: width 0.1s ease-out;
+}
 /* Ambient Background Glows */
 body::before, body::after {
     content: ''; position: fixed; z-index: -1; pointer-events: none;

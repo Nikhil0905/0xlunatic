@@ -317,3 +317,91 @@ Status: Seeking vulnerabilities, building defenses.
     }
 
 })();
+
+/* =========================================================================
+   SCROLL PROGRESS HUD & EASTER EGG
+   ========================================================================= */
+
+// 1. Scroll Progress Bar
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    if (!scrollProgress) return;
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.offsetHeight;
+    const winHeight = window.innerHeight;
+    const scrollPercent = scrollTop / (docHeight - winHeight);
+    scrollProgress.style.width = Math.min(Math.round(scrollPercent * 100), 100) + '%';
+});
+
+// 2. Keyboard Easter Egg (Typing "sudo" or "root")
+let keyBuffer = '';
+const easterEggTargets = ['sudo', 'root'];
+let easterEggTriggered = false;
+
+window.addEventListener('keydown', (e) => {
+    if (easterEggTriggered) return;
+    
+    // Only capture letter keystrokes
+    if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
+        keyBuffer += e.key.toLowerCase();
+        
+        // Keep buffer size tight to prevent memory bloat
+        if (keyBuffer.length > 10) {
+            keyBuffer = keyBuffer.substring(keyBuffer.length - 10);
+        }
+
+        easterEggTargets.forEach(target => {
+            if (keyBuffer.includes(target)) {
+                triggerEasterEgg();
+                keyBuffer = ''; 
+            }
+        });
+    }
+});
+
+function triggerEasterEgg() {
+    easterEggTriggered = true;
+    
+    // Play dramatic glitch sound (using our existing synth)
+    playSound(400, 'square', 0.1);
+    setTimeout(() => playSound(200, 'sawtooth', 0.3), 100);
+    
+    // Intense screen glitch
+    document.body.style.filter = 'contrast(200%) hue-rotate(90deg) invert(10%)';
+    document.body.style.transform = 'translate(-10px, 10px) scale(1.02)';
+    
+    setTimeout(() => {
+        // Reset screen glitch
+        document.body.style.filter = 'none';
+        document.body.style.transform = 'none';
+        
+        // Force them into Root Access mode if they aren't already
+        const toggle = document.getElementById('mode-toggle');
+        if (toggle && !toggle.checked) {
+            toggle.click();
+        }
+        
+        // Auto-open the terminal and mock them
+        const termBtn = document.getElementById('terminalBtn');
+        if (termBtn) {
+            setTimeout(() => {
+                const overlay = document.getElementById('terminalOverlay');
+                if (!overlay.classList.contains('active')) termBtn.click();
+                
+                setTimeout(() => {
+                    const termOutput = document.getElementById('terminalOutput');
+                    if (termOutput) {
+                        termOutput.innerHTML = '<span class="prompt-user">root@ns</span>:<span class="prompt-path">/var/log/auth</span>$ <br><br>' + 
+                            '<span class="output-red" style="font-weight: 800; font-size: 1.2rem;">[!] CRITICAL: UNAUTHORIZED PRIVILEGE ESCALATION ATTEMPT DETECTED</span><br>' +
+                            '<span style="color: #888;">[*] Locking active session...</span><br>' +
+                            '<span style="color: #888;">[*] Tracing source IP...</span><br>' +
+                            '<span class="output-green">[+] Just kidding. Glad you found the easter egg! - Nikhil</span><br><br>';
+                    }
+                }, 600);
+            }, 200);
+        }
+        
+        // Allow the trick to be done again after a delay
+        setTimeout(() => { easterEggTriggered = false; }, 10000);
+    }, 300);
+}
