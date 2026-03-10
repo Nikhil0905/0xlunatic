@@ -5,7 +5,7 @@ Welcome to the source code for my personal cybersecurity portfolio website.
 **Live Deployment:** [https://nikhil0905.github.io/0xlunatic/](https://nikhil0905.github.io/0xlunatic/)
 
 ## About
-This portfolio is built to showcase my journey, philosophy, skills, and projects as a Security Engineer. It is designed with a unique "Jekyll & Hyde" dual-mode interface:
+This portfolio is built to showcase my journey, philosophy, skills, and projects as an **Aspiring Security Professional**. Built specifically for placement season, it highlights my readiness for entry-level roles in Cloud Security, VAPT, and IAM. It features a unique "Jekyll & Hyde" dual-mode interface:
 
 * **Executive View:** A clean, glassmorphic, responsive design built for recruiters and executives.
 * **Root Access View:** A fully interactive, terminal-based hacker theme for engineers, featuring real commands (`help`, `whoami`, `skills`) and typing animations.
