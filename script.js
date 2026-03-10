@@ -274,11 +274,12 @@ Status: Final year student, seeking placement opportunities.
 -> DevOps: Docker, Terraform, Git, PowerShell
 <br>`,
         experience: () => `
-[+] Parsing career.log...
+[+] Parsing career.log (Internships & Research):
 1. Cyber Security Intern @ Techvanto (Jun 2025 - Jul 2025)
    - Developed ML-based NIDS, performed pentesting, completed 60+ THM labs.
 2. Cyber Security Intern @ Redynox (Jun 2025 - Jun 2025)
    - Exploited OWASP Top 10 vulnerabilities, performed manual pentesting.
+[*] Status: Actively seeking entry-level placement opportunities.
 <br>`,
         projects: () => `
 [+] Discovered deployments (Research & Academic Labs):
