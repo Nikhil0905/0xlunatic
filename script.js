@@ -264,7 +264,7 @@ Available Commands:
 [+] NIKHIL SHAKYA
 Role: Aspiring Security Engineer & Cloud Researcher
 Education: B.Tech (Hons.) CSE - Cybersecurity & Blockchain (LPU)
-Status: Final year student, seeking placement opportunities.
+Status: Pre-final year student (6th Sem), actively seeking job/internship opportunities.
 <br>`,
         skills: () => `
 [+] Initiating skill enumeration...
