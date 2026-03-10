@@ -2,7 +2,7 @@
 
 Welcome to the source code for my personal cybersecurity portfolio website.
 
-**Live Deployment:** [https://github.com/Nikhil0905/0xlunatic](https://github.com/Nikhil0905/0xlunatic)
+**Live Deployment:** [https://nikhil0905.github.io/0xlunatic/](https://nikhil0905.github.io/0xlunatic/)
 
 ## About
 This portfolio is built to showcase my journey, philosophy, skills, and projects as a Security Engineer. It is designed with a unique "Jekyll & Hyde" dual-mode interface:
