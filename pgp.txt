@@ -1,0 +1,10 @@
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBGeUYZoBEADD42v0c68B7G6lZ0m3qR8+n+FqL1hU9rYk3dKjV6B+QyMz7vC7
+... [Mock PGP Key block - in reality generating a real 4096 bit RSA key for nikhilshakya0905@gmail.com would be done via GnuPG] ...
+[!] NOTE: THIS IS A PLACEHOLDER FOR YOUR ACTUAL PGP PUBLIC KEY.
+Please generate real keys locally via 'gpg --full-generate-key' and export the ASCII armor here.
+
+Fingerprint: 7B3A F4D3 89A2 E1B9 0281  5C99 D2EA F1B4 5X99 E7A1
+uid           [ultimate] Nikhil Shakya (Security Engineer) <nikhilshakya0905@gmail.com>
+-----END PGP PUBLIC KEY BLOCK-----

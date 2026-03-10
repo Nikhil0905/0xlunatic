@@ -1,0 +1,16 @@
+{
+    "name": "Nikhil Shakya - Security Portfolio",
+    "short_name": "NS Sec",
+    "description": "Portfolio of Nikhil Shakya, Cloud Security Engineer",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0b1120",
+    "theme_color": "#38bdf8",
+    "icons": [
+        {
+            "src": "favicon.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -249,10 +249,16 @@ Available Commands:
   <span style="color:#3b82f6;">skills</span>      - Enumerate technical capabilities
   <span style="color:#3b82f6;">projects</span>    - List deployed mission logs
   <span style="color:#3b82f6;">experience</span>  - View service history
+  <span style="color:#3b82f6;">pgp</span>         - Fetch cryptographic public key
   <span style="color:#3b82f6;">contact</span>     - Establish secure comms
   <span style="color:#3b82f6;">clear</span>       - Clear terminal output
   <span style="color:#3b82f6;">sudo mode</span>   - Override environmental theme constraints
   <span style="color:#3b82f6;">exit</span>        - Terminate shell session
+<br>`,
+        pgp: () => `
+[+] PGP KEY LOCATION:
+> <span style="color:#0f0;">wget https://0xlunatic.github.io/pgp.txt</span>
+> Or <a href="pgp.txt" target="_blank" class="term-link" style="color:#3b82f6; text-decoration: underline;">click here to view in browser</a>.
 <br>`,
         whoami: () => `
 [+] NIKHIL SHAKYA
@@ -404,4 +410,15 @@ function triggerEasterEgg() {
         // Allow the trick to be done again after a delay
         setTimeout(() => { easterEggTriggered = false; }, 10000);
     }, 300);
+}
+
+// 3. Register Service Worker (PWA Offline Support)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then(registration => {
+            console.log('ServiceWorker registered successfully with scope: ', registration.scope);
+        }).catch(error => {
+            console.log('ServiceWorker registration failed: ', error);
+        });
+    });
 }

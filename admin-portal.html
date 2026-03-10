@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS Admin Control Portal</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 50px;
+            text-align: center;
+        }
+        .warning {
+            color: #f00;
+            font-size: 2em;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .console {
+            text-align: left;
+            max-width: 600px;
+            margin: 40px auto;
+            border: 1px solid #0f0;
+            padding: 20px;
+            background: #050505;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning">UNAUTHORIZED ACCESS DETECTED</div>
+    <div class="console">
+        > TRACING SOURCE IP...<br>
+        > 192.168.1.??? DETECTED<br>
+        > INITIATING COUNTER-MEASURES...<br>
+        > DEPLOYING RICKROLL PROTOCOL...<br><br>
+        [!] Warning to Automated Scanners: This is a honeypot.<br>
+        <span style="color: #666;">Redirecting to security footage...</span>
+    </div>
+    <script>
+        setTimeout(() => {
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }, 4000);
+    </script>
+</body>
+</html>
