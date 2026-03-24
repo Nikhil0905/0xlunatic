@@ -444,8 +444,11 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
 .hero-visual { flex: 0 0 400px; display: flex; justify-content: center; align-items: center; }
 
 @media (max-width: 1024px) {
-    .hero { flex-direction: column; text-align: left; justify-content: center; }
-    .hero-visual { display: none; }
+    .hero { flex-direction: column-reverse; text-align: center; justify-content: center; margin-top: 20px; }
+    .hero-content { display: flex; flex-direction: column; align-items: center; }
+    .hero-actions { justify-content: center; }
+    .hero-quote { margin: 0 auto 36px auto; }
+    .hero-visual { flex: 0 0 auto; display: flex; justify-content: center; margin-bottom: 24px; }
 }
 
 /* Cyber Portrait — Container with animated ring */
@@ -453,7 +456,7 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     position: relative; width: 360px; height: 360px;
     border-radius: 50%; overflow: visible;
     perspective: 1000px;
-    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, width 0.3s, height 0.3s;
     transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transform-style: preserve-3d;
 }
@@ -729,6 +732,7 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     .grid { grid-template-columns: 1fr; }
     .grid--bento { grid-template-columns: 1fr; }
     .card-wide, .card-tall { grid-column: span 1; grid-row: span 1; }
+    .card { padding: 24px; }
 }
 
 .card {
@@ -1133,9 +1137,11 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     .toggle-label { width: 200px; }
     .hero-title { font-size: 2.8rem; }
     .section-title { font-size: 2rem; }
-    .terminal-window { height: 80vh; }
+    .terminal-window { height: 80vh; max-width: 95%; }
     .hero-actions { flex-direction: column; gap: 12px; }
     .section { padding: 56px 0; }
+    .cyber-portrait { width: 260px; height: 260px; }
+    .nav-links { display: none; } /* Hide text links on very small screens, keep icons or just simplify */
 }
 
 @media (max-width: 480px) {
@@ -1144,6 +1150,8 @@ body.root-access .view-root { display: block; animation: glitchReveal 0.4s ease 
     .nav-controls { gap: 8px; }
     .toggle-label { width: 160px; }
     .toggle-text { font-size: 0.65rem; }
+    .cyber-portrait { width: 220px; height: 220px; }
+    .card { padding: 20px; }
 }
 
 
