@@ -27,15 +27,25 @@
     <meta name="twitter:image" content="https://0xlunatic.github.io/assets/og-image.png">
     <link rel="stylesheet" href="style.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;800;900&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css" integrity="sha512-BlFCHJWngPEHme4TwlEob6dPLfoNaQBTTISPwr4344nxR353w2vgGZ7GiSadbbeR20cJeeM0u1I2lAZuIZ1aOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7cenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <!-- Scroll Progress HUD -->
     <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Ambient Background Orbs -->
+    <div class="ambient-orb ambient-orb--cyan"></div>
+    <div class="ambient-orb ambient-orb--purple"></div>
+
+    <!-- Floating Hexagon Scanners -->
+    <div class="hex-scanner hex-scanner--1"><svg viewBox="0 0 100 115.47"><polygon points="50 0 100 28.87 100 86.6 50 115.47 0 86.6 0 28.87"/></svg></div>
+    <div class="hex-scanner hex-scanner--2"><svg viewBox="0 0 100 115.47"><polygon points="50 0 100 28.87 100 86.6 50 115.47 0 86.6 0 28.87"/></svg></div>
+    <div class="hex-scanner hex-scanner--3"><svg viewBox="0 0 100 115.47"><polygon points="50 0 100 28.87 100 86.6 50 115.47 0 86.6 0 28.87"/></svg></div>
 
     <!-- Loader -->
     <div id="loader" class="loader">
@@ -122,10 +132,12 @@
 
             <!-- Hero Portrait -->
             <div class="hero-visual">
-                <div class="cyber-portrait" style="--portrait: url('assets/portrait.jpg');">
-                    <img src="assets/portrait.jpg" alt="Nikhil Shakya" class="portrait-base" loading="lazy" />
-                    <div class="portrait-overlay"></div>
-                    <div class="scanlines"></div>
+                <div class="cyber-portrait" style="--portrait: url('assets/portrait1.png');">
+                    <div class="portrait-inner">
+                        <img src="assets/portrait1.png" alt="Nikhil Shakya" class="portrait-base" loading="lazy" />
+                        <div class="portrait-overlay"></div>
+                        <div class="scanlines"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -161,8 +173,8 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-meta">Jun 2025 – Jul 2025</div>
-                        <h3 class="timeline-title">Cyber Security Intern</h3>
-                        <div class="timeline-org">Techvanto</div>
+                        <h3 class="timeline-title"><i class="fas fa-shield-alt" style="color:var(--accent);margin-right:8px;"></i>Cyber Security Intern</h3>
+                        <div class="timeline-org"><i class="fas fa-building" style="margin-right:6px;"></i>Techvanto</div>
                         <ul class="timeline-details">
                             <li>Developed SmartNetIDS, a machine learning–based Network Intrusion Detection System.</li>
                             <li>Conducted security assessments and penetration testing using Nmap, Wireshark,
@@ -172,8 +184,8 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-meta">Jun 2025 – Jun 2025</div>
-                        <h3 class="timeline-title">Cyber Security Intern</h3>
-                        <div class="timeline-org">Redynox-TheRedUsers</div>
+                        <h3 class="timeline-title"><i class="fas fa-crosshairs" style="color:var(--accent);margin-right:8px;"></i>Cyber Security Intern</h3>
+                        <div class="timeline-org"><i class="fas fa-building" style="margin-right:6px;"></i>Redynox-TheRedUsers</div>
                         <ul class="timeline-details">
                             <li>Exploited web application vulnerabilities (SQLi, CSRF, Clickjacking) using OWASP ZAP.
                             </li>
@@ -205,9 +217,9 @@
                 <div class="card project-card reveal" data-category="cloud">
                     <div class="view-executive">
                         <div class="project-tags">
-                            <span class="project-tag">Cloud Security</span>
-                            <span class="project-tag">IAM/STS</span>
-                            <span class="project-tag">Terraform</span>
+                            <span class="project-tag"><i class="devicon-amazonwebservices-plain-wordmark"></i> Cloud Security</span>
+                            <span class="project-tag"><i class="fas fa-key"></i> IAM/STS</span>
+                            <span class="project-tag"><i class="devicon-terraform-plain"></i> Terraform</span>
                         </div>
                         <h3 class="project-title">Cloud Control-Plane Purple Team Lab</h3>
                         <p class="project-description">Research lab studying identity-based attacks in cloud control planes, focusing on IAM role misuse and CloudTrail evasion techniques.</p>
@@ -233,9 +245,9 @@
                 <div class="card project-card reveal" data-category="offensive">
                     <div class="view-executive">
                         <div class="project-tags">
-                            <span class="project-tag">Splunk</span>
-                            <span class="project-tag">SIEM</span>
-                            <span class="project-tag">Python</span>
+                            <span class="project-tag"><i class="fas fa-chart-bar"></i> Splunk</span>
+                            <span class="project-tag"><i class="fas fa-shield-alt"></i> SIEM</span>
+                            <span class="project-tag"><i class="devicon-python-plain"></i> Python</span>
                         </div>
                         <h3 class="project-title">InsightOps</h3>
                         <p class="project-description">Security operations intelligence engine correlating Splunk alerts into MITRE ATT&CK–aligned detection logic and risk scoring.</p>
@@ -261,9 +273,9 @@
                 <div class="card project-card reveal" data-category="cloud">
                     <div class="view-executive">
                         <div class="project-tags">
-                            <span class="project-tag">NIDS</span>
-                            <span class="project-tag">Scikit-Learn</span>
-                            <span class="project-tag">Streamlit</span>
+                            <span class="project-tag"><i class="fas fa-network-wired"></i> NIDS</span>
+                            <span class="project-tag"><i class="fas fa-brain"></i> Scikit-Learn</span>
+                            <span class="project-tag"><i class="devicon-streamlit-plain"></i> Streamlit</span>
                         </div>
                         <h3 class="project-title">SmartNetIDS</h3>
                         <p class="project-description">Lightweight, ML-driven Network Intrusion Detection System for real-time anomaly detection with a custom Streamlit dashboard.</p>
@@ -289,9 +301,9 @@
                 <div class="card project-card reveal" data-category="offensive">
                     <div class="view-executive">
                         <div class="project-tags">
-                            <span class="project-tag">Cryptography</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">JWT</span>
+                            <span class="project-tag"><i class="fas fa-lock"></i> Cryptography</span>
+                            <span class="project-tag"><i class="devicon-python-plain"></i> Python</span>
+                            <span class="project-tag"><i class="fas fa-fingerprint"></i> JWT</span>
                         </div>
                         <h3 class="project-title">Secure File Management System</h3>
                         <p class="project-description">CLI-based secure storage with AES-256 encryption, 2FA via PyOTP, and integrated malware scanning for secure data persistence.</p>
@@ -330,9 +342,9 @@
                         </div>
                         <p class="skill-node-desc">Specializing in vulnerability research and post-exploitation strategies.</p>
                         <div class="skill-tags">
-                            <span>VAPT</span>
-                            <span>Web App Sec</span>
-                            <span>Network Pentesting</span>
+                            <span><i class="fas fa-bug"></i> VAPT</span>
+                            <span><i class="fas fa-globe"></i> Web App Sec</span>
+                            <span><i class="fas fa-network-wired"></i> Network Pentesting</span>
                         </div>
                     </div>
 
@@ -344,9 +356,9 @@
                         </div>
                         <p class="skill-node-desc">Focusing on secure cloud migrations and identity access management.</p>
                         <div class="skill-tags">
-                            <span>AWS Sec</span>
-                            <span>IAM Policy</span>
-                            <span>Linux Hardening</span>
+                            <span><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS Sec</span>
+                            <span><i class="fas fa-user-shield"></i> IAM Policy</span>
+                            <span><i class="devicon-linux-plain"></i> Linux Hardening</span>
                         </div>
                     </div>
 
@@ -358,9 +370,9 @@
                         </div>
                         <p class="skill-node-desc">Building resilient systems with security baked into the lifecycle.</p>
                         <div class="skill-tags">
-                            <span>Python</span>
-                            <span>Blockchain</span>
-                            <span>GitOps</span>
+                            <span><i class="devicon-python-plain"></i> Python</span>
+                            <span><i class="fas fa-link"></i> Blockchain</span>
+                            <span><i class="devicon-git-plain"></i> GitOps</span>
                         </div>
                     </div>
                 </div>
@@ -396,15 +408,15 @@
                 <!-- Education -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
-                        <h3>Education</h3>
+                        <h3><i class="fas fa-graduation-cap" style="color:var(--accent);margin-right:8px;"></i>Education</h3>
                         <ul class="simple-list">
                             <li>
-                                <strong>Lovely Professional University</strong><br>
+                                <strong><i class="fas fa-university" style="margin-right:6px;"></i>Lovely Professional University</strong><br>
                                 <span style="font-size:0.9rem; color:var(--text-secondary);">B.Tech (Hons.) CSE -
-                                    Cybersecurity & Blockchain<br>CGPA: 8.66</span>
+                                    Cybersecurity &amp; Blockchain<br>CGPA: 8.66</span>
                             </li>
                             <li style="margin-top:12px;">
-                                <strong>Kendriya Vidyalaya 3BRD</strong><br>
+                                <strong><i class="fas fa-school" style="margin-right:6px;"></i>Kendriya Vidyalaya 3BRD</strong><br>
                                 <span style="font-size:0.9rem; color:var(--text-secondary);">Intermediate - PCM with
                                     CS<br>Percentage: 86%</span>
                             </li>
@@ -425,13 +437,13 @@
                 <!-- Certifications -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
-                        <h3>Certifications</h3>
+                        <h3><i class="fas fa-certificate" style="color:var(--accent);margin-right:8px;"></i>Certifications</h3>
                         <ul class="simple-list">
-                            <li>Certified Digital Forensic Investigator | QuickHeal</li>
-                            <li>Certified Blue Team Practitioner (CBTP) | SecOps Group</li>
-                            <li>Certified Network Security Practitioner (CNSP) | SecOps Group</li>
-                            <li>Network+ Certification | CompTIA</li>
-                            <li>Cyber Security 101 | TryHackMe</li>
+                            <li><i class="fas fa-search" style="color:var(--accent);margin-right:6px;"></i>Certified Digital Forensic Investigator | QuickHeal</li>
+                            <li><i class="fas fa-shield-alt" style="color:var(--accent);margin-right:6px;"></i>Certified Blue Team Practitioner (CBTP) | SecOps Group</li>
+                            <li><i class="fas fa-network-wired" style="color:var(--accent);margin-right:6px;"></i>Certified Network Security Practitioner (CNSP) | SecOps Group</li>
+                            <li><i class="fas fa-server" style="color:var(--accent);margin-right:6px;"></i>Network+ Certification | CompTIA</li>
+                            <li><i class="fas fa-flag" style="color:var(--accent);margin-right:6px;"></i>Cyber Security 101 | TryHackMe</li>
                         </ul>
                     </div>
                     <div class="view-root">
@@ -450,11 +462,11 @@
                 <!-- Achievements -->
                 <div class="card service-card scroll-reveal">
                     <div class="view-executive">
-                        <h3>Operational Ranking</h3>
+                        <h3><i class="fas fa-trophy" style="color:var(--accent);margin-right:8px;"></i>Operational Ranking</h3>
                         <div class="thm-badge-container">
                             <!-- TryHackMe Dynamic Badge -->
-                            <a href="https://tryhackme.com/p/2657685" target="_blank" rel="noopener noreferrer">
-                                <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px;">
+                            <a href="https://tryhackme.com/p/0xLunatic" target="_blank" rel="noopener noreferrer">
+                                <img src="https://tryhackme-badges.s3.amazonaws.com/0xLunatic.png" alt="TryHackMe Badge" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
                             </a>
                         </div>
                     </div>
@@ -538,11 +550,14 @@
         </div>
     </div>
 
+    <!-- Gradient Separator -->
+    <hr class="gradient-line">
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-inner">
             <div class="footer-logo">NS</div>
-            <div class="footer-copy">&copy; 2026 Nikhil Shakya. Secure by Design.</div>
+            <div class="footer-copy">&copy; 2026 Nikhil Shakya // Secure by Design.</div>
         </div>
     </footer>
 

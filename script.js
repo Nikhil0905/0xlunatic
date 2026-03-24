@@ -159,19 +159,24 @@
         });
     }
 
-    // ─── SCROLL REVEAL ──────────────────────────────────
+    // ─── SCROLL REVEAL (Staggered + Cascading) ────────────
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             const el = entry.target;
+            // Find index among siblings for stagger
+            const parent = el.parentElement;
+            const siblings = parent ? Array.from(parent.querySelectorAll('.scroll-reveal, .reveal')) : [];
+            const idx = siblings.indexOf(el);
+            const delay = Math.max(0, idx) * 120;
             setTimeout(() => {
                 el.classList.add('visible');
-            }, index * 100); // Stagger
+            }, delay);
             revealObserver.unobserve(el);
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
-    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.scroll-reveal, .reveal').forEach(el => revealObserver.observe(el));
 
     // ─── TYPEWRITER EFFECT ──────────────────────────────
     const typedElements = new Set();
@@ -446,7 +451,55 @@ window.addEventListener('scroll', () => {
     const winHeight = window.innerHeight;
     const scrollPercent = scrollTop / (docHeight - winHeight);
     scrollProgress.style.width = Math.min(Math.round(scrollPercent * 100), 100) + '%';
-});
+}, { passive: true });
+
+// 1b. Parallax Floating Hexagons on Scroll
+const hexScanners = document.querySelectorAll('.hex-scanner');
+if (hexScanners.length) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        hexScanners.forEach((hex, i) => {
+            const speed = 0.02 + (i * 0.015);
+            const rotate = scrollY * (0.01 + i * 0.005);
+            hex.style.transform = `translateY(${scrollY * speed}px) rotate(${rotate}deg)`;
+        });
+    }, { passive: true });
+}
+
+// 1c. Hero Title Text Scramble Effect
+function textScramble(el) {
+    if (!el || el.dataset.scrambled) return;
+    el.dataset.scrambled = 'true';
+    const originalText = el.textContent;
+    const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const duration = 1200;
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const revealedLen = Math.floor(progress * originalText.length);
+        let result = '';
+        for (let i = 0; i < originalText.length; i++) {
+            if (originalText[i] === ' ') {
+                result += ' ';
+            } else if (i < revealedLen) {
+                result += originalText[i];
+            } else {
+                result += chars[Math.floor(Math.random() * chars.length)];
+            }
+        }
+        el.textContent = result;
+        if (progress < 1) requestAnimationFrame(animate);
+        else el.textContent = originalText;
+    }
+    // Delay to start after loader
+    setTimeout(() => requestAnimationFrame(animate), 1500);
+}
+
+// Run scramble on the hero title
+const heroTitle = document.querySelector('.hero-title');
+if (heroTitle) textScramble(heroTitle);
 
 // 2. Keyboard Easter Egg (Typing "sudo" or "root")
 let keyBuffer = '';
